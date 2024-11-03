@@ -1,0 +1,128 @@
+    @import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap');
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+    .bg-gradient {
+        background: linear-gradient(-270deg, #0b6839 15.94%, #038a47 34.45%, #39a935 50.77%, rgba(161, 197, 23, 0) 72.6%);
+    }
+    
+    .truncate-subtitle {
+        width: 600px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .truncate-bread {
+        width: 160px;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .truncate-badge {
+        width: 40px;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    
+    @media screen and (max-width: 768px) {
+        .truncate-title {
+            width: 146px;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+    /* Medium device */
+    
+    @media screen and (min-width: 768px) and (max-width: 1024px) {
+        .truncate-title {
+            width: 300px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .truncate-bread {
+            width: 800px;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+    /* Large */
+    
+    @media screen and (min-width: 1024px) and (max-width: 1280px) {
+        .truncate-title {
+            width: 600px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+    /*Extra Large */
+    
+    @media screen and (min-width: 1280px) and (max-width: 1920px) {
+        .truncate-title {
+            width: 500px;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .truncate-bread {
+            width: 800px;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+    /* Extra Extra Large */
+    
+    @media screen and (min-width: 1920px) and (max-width: 2560px) {
+        .truncate-title {
+            width: 700px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .truncate-bread {
+            width: 800px;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
