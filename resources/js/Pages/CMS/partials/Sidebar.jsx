@@ -8,8 +8,12 @@ const Sidebar = () => {
     const { url } = usePage();
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
+    // Get the middle of url
+    const middle = url.split('/')[2];
 
-    const isActive = (path) => url.endsWith(path);
+    const isDashboard = (path) => url === path;
+
+    const isActive = (path) => middle === path;
     
 
     return (
@@ -37,7 +41,7 @@ const Sidebar = () => {
                 <nav className="h-screen mt-10">
                     <Link
                         href="/dashboard"
-                        className={`flex items-center px-6 py-2 mt-4 ${isActive('/dashboard') ? 'bg-gray-700 text-gray-100' : 'text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100'}`}
+                        className={`flex items-center px-6 py-2 mt-4 ${isDashboard('/dashboard') ? 'bg-gray-700 text-gray-100' : 'text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100'}`}
                     >
                         <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
@@ -47,8 +51,8 @@ const Sidebar = () => {
                     </Link>
 
                     <Link
-                        href="/ui-elements"
-                        className={`flex items-center px-6 py-2 mt-4 ${isActive('/ui-elements') ? 'bg-gray-700 text-gray-100' : 'text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100'}`}
+                        href="/dashboard/news"
+                        className={`flex items-center px-6 py-2 mt-4 ${isActive('news') ? 'bg-gray-700 text-gray-100' : 'text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100'}`}
                     >
                         <BiNews className="w-6 h-6" />
                         <span className="mx-3">News</span>
@@ -56,7 +60,7 @@ const Sidebar = () => {
 
                     <Link
                         href="/dashboard/categories"
-                        className={`flex items-center px-6 py-2 mt-4 ${isActive('/categories') || isActive('/create')  ? 'bg-gray-700 text-gray-100' : 'text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100'}`}
+                        className={`flex items-center px-6 py-2 mt-4 ${isActive('categories')  ? 'bg-gray-700 text-gray-100' : 'text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100'}`}
                     >
                         <TbCategoryPlus className="w-6 h-6" />
                         <span className="mx-3">Category News</span>
@@ -64,7 +68,7 @@ const Sidebar = () => {
 
                     <Link
                         href="/dashboard/authors"
-                        className={`flex items-center px-6 py-2 mt-4 ${isActive('/authors') ? 'bg-gray-700 text-gray-100' : 'text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100'}`}
+                        className={`flex items-center px-6 py-2 mt-4 ${isActive('authors') ? 'bg-gray-700 text-gray-100' : 'text-gray-500 hover:bg-gray-700 hover:bg-opacity-25 hover:text-gray-100'}`}
                     >
                         <BsPersonVcard className="w-6 h-6" />
                         <span className="mx-3">Authors</span>

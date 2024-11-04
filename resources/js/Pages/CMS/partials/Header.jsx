@@ -1,40 +1,35 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 
 const Header = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [notificationOpen, setNotificationOpen] = useState(false);
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+
+    try {
+      axios.post('/logout');
+      window.location.href = '/';
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  }
 
   return (
     <header className="flex items-center justify-between px-6 py-4 bg-white border-b-4 border-primary">
       <div className="flex items-center">
-        <button 
-          onClick={() => setSidebarOpen(true)} 
-          className="text-gray-500 focus:outline-none lg:hidden"
-        >
-          <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 6H20M4 12H20M4 18H11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
 
         <div className="relative mx-4 lg:mx-0">
-          <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-            <svg className="w-5 h-5 text-gray-500" viewBox="0 0 24 24" fill="none">
-              <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </span>
-          <input 
-            className="w-32 pl-10 pr-4 rounded-md form-input sm:w-64 focus:border-primary" 
-            type="text" 
-            placeholder="Search" 
-          />
+          <h3 className='font-medium text-gray-700'>
+            CMS
+          </h3>
         </div>
       </div>
-      
+
       <div className="flex items-center">
         <div className="relative">
-          <button 
-            onClick={() => setNotificationOpen(!notificationOpen)} 
+          <button
             className="flex mx-4 text-gray-600 focus:outline-none"
           >
             <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -42,32 +37,22 @@ const Header = () => {
             </svg>
           </button>
 
-          {notificationOpen && (
-            <div className="absolute right-0 z-10 mt-2 overflow-hidden bg-white rounded-lg shadow-xl w-80" style={{ width: '20rem' }}>
-              {/* Notification items */}
-              <a href="#" className="flex items-center px-4 py-3 -mx-2 text-gray-600 hover:text-white hover:bg-primary">
-                <img className="object-cover w-8 h-8 mx-1 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" alt="avatar" />
-                <p className="mx-2 text-sm">
-                  <span className="font-bold">Sara Salah</span> replied on the <span className="font-bold text-indigo-400">Upload Image</span> article . 2m
-                </p>
-              </a>
-              {/* Add more notifications similarly */}
-            </div>
-          )}
         </div>
-        
+
         <div className="relative">
-          <button 
-            onClick={() => setDropdownOpen(!dropdownOpen)} 
+          <button
+            onClick={() => setDropdownOpen(!dropdownOpen)}
             className="relative block w-8 h-8 overflow-hidden rounded-full shadow focus:outline-none"
           >
-            <img className="object-cover w-full h-full" src="https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=296&q=80" alt="Your avatar" />
+            <img className="object-cover w-full h-full" src="/images/profile.png" alt="Your avatar" />
           </button>
 
           {dropdownOpen && (
             <div className="absolute right-0 z-10 w-48 mt-2 overflow-hidden bg-white rounded-md shadow-xl">
-              <a href="#" className="block px-4 py-2 text-lg text-gray-700 hover:bg-primary hover:text-white">Profile</a>
-              <a href="/login" className="block px-4 py-2 text-lg text-gray-700 hover:bg-primary hover:text-white">Logout</a>
+              <form onSubmit={handleLogout}>
+                <button type='submit' className="block w-full px-4 py-2 text-lg text-left text-gray-700 hover:bg-primary hover:text-white">Logout</button>
+              </form>
+
             </div>
           )}
         </div>

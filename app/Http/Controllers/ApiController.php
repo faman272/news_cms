@@ -14,8 +14,9 @@ class ApiController extends Controller
     public function get_news() {
         // $news = News::orderBy("created_at","desc")->get();
 
-        $news = News::with("categories")->get();
-
+        $news = News::with("categories")
+        ->orderBy('created_at', 'desc')
+        ->get();
 
         return response()->json($news);
     }

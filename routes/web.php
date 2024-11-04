@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -17,14 +19,11 @@ use Inertia\Inertia;
 //     ]);
 // });
 
+
+
 Route::get("/", function () {
-    return Inertia::render("News/pages/ListNews");
+    return Inertia::render("News/pages/News");
 });
-
-// Route::get("/news/{id}", function () {
-//     return Inertia::render("News/DetailNews");
-// });
-
 
 // API NEWS:
 // Get All News
@@ -40,10 +39,10 @@ Route::get("/api/category_news", [ApiController::class, "get_category_news"]);
 Route::get("/news/{slug}", [ApiController::class, "get_detail_news"]);
 
 
-Route::get('/dashboard', function () {
-    return Inertia::render('CMS/Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
+// Dashboard
+Route::get('/dashboard', [DashboardController::class, 'index'])
+->middleware(['auth', 'verified']);
 
 
 // Manage News
@@ -81,7 +80,6 @@ Route::get('/dashboard/authors/create', [AuthorController::class, 'create'])
 ->middleware(['auth', 'verified']);
 Route::post('/dashboard/authors', [AuthorController::class, 'store'])
 ->middleware(['auth', 'verified']);
-
 // Edit Author
 Route::get('/dashboard/authors/{id}', [AuthorController::class, 'edit'])
 ->middleware(['auth', 'verified']);
@@ -93,14 +91,30 @@ Route::delete('/dashboard/authors/{id}', [AuthorController::class, 'destroy'])
 
 
 
+// Manage News
+Route::get('/dashboard/news', [NewsController::class, 'index'])
+->middleware(['auth', 'verified']);
+
+// Add News
+Route::get('/dashboard/news/create', [NewsController::class, 'create'])
+->middleware(['auth', 'verified']);
+Route::post('/dashboard/news/create', [NewsController::class, 'store'])
+->middleware(['auth', 'verified']);
+
+// Edit News
+Route::get('/dashboard/news/{id}', [NewsController::class, 'edit'])
+->middleware(['auth', 'verified']);
+Route::put('/dashboard/news/{id}', [NewsController::class, 'update'])
+->middleware(['auth', 'verified']);
+
+// Only Update image
+Route::post('/dashboard/news/image/{id}', [NewsController::class, 'updateImage'])
+->middleware(['auth', 'verified']);
+
+// Delete News
+Route::delete('/dashboard/news/{id}', [NewsController::class, 'destroy'])
+->middleware(['auth', 'verified']);
 
 
-
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
 require __DIR__.'/auth.php';

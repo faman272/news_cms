@@ -66,23 +66,11 @@ const DetailNews = ({ news, author, otherNews }) => {
                         </h2>
                         <br />
 
-                        <p className='text-[12px] text-justify  leading-5 xl:text-[14px] xl:leading-6'>
-                            {news.content}
-                        </p>
+                        <div
+                            className='text-justify'
+                            dangerouslySetInnerHTML={{ __html: news.content }} // Use dangerouslySetInnerHTML here
+                        />
 
-                        {/* <div className='py-4'>
-                            <div className='w-[311px] h-[180px] md:w-[500px] md:h-[250px] xl:w-[600px] xl:h-[350px]'>
-                                <img src="/images/detail.png" alt="" className='object-cover w-full h-full rounded-[8px]' />
-                            </div>
-                            <p className='text-2xs xl:text-xs mt-2 text-darkGrey leading-[7px]'>
-                                Foto Bersama Lorem Ipsum Dolor Sit Amer
-                            </p>
-                        </div>
-
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi consequuntur vitae, eos ipsam distinctio voluptatum? Itaque id, nulla explicabo iste nisi non molestiae odit veniam libero autem laborum eos amet?</p>
-                        <br />
-                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi consequuntur vitae, eos ipsam distinctio voluptatum? Itaque id, nulla explicabo iste nisi non molestiae odit veniam libero autem laborum eos amet?</p>
-                     */}
 
                     </div>
 
