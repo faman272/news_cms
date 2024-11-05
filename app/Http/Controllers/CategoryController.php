@@ -11,7 +11,7 @@ class CategoryController extends Controller
 {
     public function index() {
         $categories = Category::all();
-        return Inertia::render("CMS/pages/CategoryNews/Categories", [
+        return Inertia::render("CMS/pages/CategoryNews/ListCategories", [
             "categories" => $categories
         ]);
     }

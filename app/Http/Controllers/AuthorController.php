@@ -10,7 +10,7 @@ class AuthorController extends Controller
 {
     public function index() {
         $authors = Author::orderBy('created_at', 'desc')->get();
-        return Inertia::render("CMS/pages/Author/Authors", [
+        return Inertia::render("CMS/pages/Author/ListAuthors", [
             "authors" => $authors
         ]);
     }

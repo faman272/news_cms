@@ -14,18 +14,18 @@ const InputSearch = ({ setSearchQuery }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="flex gap-4">
-            <div className="relative flex items-center w-full">
-                <FiSearch size={16} className="absolute text-gray-500 left-3" />
+        <form onSubmit={handleSubmit} className="flex w-full gap-4 xl:w-1/2">
+            <div className="relative flex items-center w-full ">
+                <FiSearch size={16} className="absolute text-primary left-3" />
                 <input
                     type="text"
-                    value={query} // Mengatur nilai input
-                    onChange={handleOnChange} // Menangani perubahan input
+                    value={query} 
+                    onChange={handleOnChange} 
                     placeholder="CARI DISINI"
-                    className="w-[222px] lg:w-[325px] xl:w-[420px] h-[34px] text-xs leading-2xs lg:text-base pl-10 pr-3 text-right placeholder-gray-400 border border-gray-300 rounded-sm focus:outline-none focus:border-primary"
+                    className="w-full pr-3 text-xs text-right placeholder-gray-400 border border-gray-300 rounded-sm leading-2xs lg:text-base focus:outline-none focus:border-primary"
                 />
             </div>
-            <button type='submit' className="py-2 text-xs font-bold text-white rounded-sm bg-primary leading-2xs lg:text-sm px-7">
+            <button type='submit' className="py-2 text-xs font-bold text-white rounded-sm xl:text-base bg-primary leading-2xs lg:text-sm px-7">
                 CARI
             </button>
         </form>

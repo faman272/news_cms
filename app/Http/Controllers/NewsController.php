@@ -16,7 +16,7 @@ class NewsController extends Controller
     {
         // With author
         $news = News::with("author")->with("categories")->orderBy("created_at", "desc")->get();
-        return Inertia::render("CMS/pages/News/News", [
+        return Inertia::render("CMS/pages/News/ListNews", [
             "news" => $news
         ]);
     }

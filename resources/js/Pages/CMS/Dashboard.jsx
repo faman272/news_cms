@@ -10,11 +10,10 @@ const Dashboard = (props) => {
 
     return (
         <Main>
-
             <h3 className="text-3xl font-medium text-gray-700">Dashboard</h3>
 
             <div className="mt-4">
-                <div className="flex flex-wrap -mx-6">
+                <div className="-mx-6 lg:grid xl:flex xl:flex-wrap">
 
                     <div className="w-full px-6 mt-6 sm:w-1/2 xl:w-1/3 xl:mt-0">
                         <div className="flex items-center px-5 py-6 bg-white rounded-md shadow-sm">

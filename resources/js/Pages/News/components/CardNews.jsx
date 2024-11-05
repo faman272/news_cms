@@ -1,15 +1,27 @@
 import React from 'react'
 import formatDate from '../utils/formatDate'
 
-const CardNews = ({ title, subtitle, image, date, categories, slug}) => {
+const CardNews = ({ title, subtitle, image, date, categories, slug }) => {
 
+
+    const sourceImage = () => {
+        if (image.startsWith('/storage/')) {
+            return image
+        } else {
+            return `/storage/${image}`
+        }
+    }
 
     return (
         <div className="px-3 py-2 mb-2 lg:px-8 lg:py-4 bg-backgroundPrimary rounded-2xl">
             <a href={`/news/${slug}`}>
                 <div className="flex gap-8 ">
                     <div className='h-[100px] w-[133px] lg:w-[194px] lg:h-[145px] xl:w-[194px] xl:h-[145px]'>
-                        <img src={image} alt="" className="object-cover w-full h-full rounded-base" />
+                        <img
+                            src={image.startsWith('/storage/') ? image : `/storage/${image}`}
+                            alt=""
+                            className="object-cover w-full h-full rounded-base"
+                        />
                     </div>
 
                     <div className="flex flex-col gap-2">

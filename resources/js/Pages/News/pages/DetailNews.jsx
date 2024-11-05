@@ -11,7 +11,7 @@ const DetailNews = ({ news, author, otherNews }) => {
     return (
         <div className='py-28 font-body'>
 
-            {/* Breadcumbs */}
+            {/* Breadcrumbs */}
             <Breadcrumbs 
                 title={news.title}
             />
@@ -19,7 +19,7 @@ const DetailNews = ({ news, author, otherNews }) => {
             <section className='p-8 xl:p-16 bg-backgroundPrimary '>
                 <div className='flex flex-col gap-8 md:flex-row md:justify-between md:items-center 2xl:justify-center'>
                     <div className='flex flex-col gap-4'>
-                        <div className='w-[250px] md:w-full 2xl:w-[800px]'>
+                        <div className='w-full 2xl:w-[800px]'>
                             <h1 className='text-3xl font-semibold leading-6 text-tertiary xl:text-4xl'>
                                 {news.title}
                             </h1>
@@ -42,7 +42,10 @@ const DetailNews = ({ news, author, otherNews }) => {
                         </div>
                     </div>
                     <div>
-                        <div className='w-[311px] h-[180px] xl:w-[500px] xl:h-[300px] 2xl:w-[700px] 2xl:h-[350px]'>
+                        {/* <div className='w-[311px] h-[180px] xl:w-[500px] xl:h-[300px] 2xl:w-[700px] 2xl:h-[350px]'>
+                            <img src={`/${news.image}`} alt="" className='object-cover w-full h-full rounded-[8px]' />
+                        </div> */}
+                        <div className='w-full h-auto'>
                             <img src={`/${news.image}`} alt="" className='object-cover w-full h-full rounded-[8px]' />
                         </div>
                     </div>

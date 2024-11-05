@@ -59,6 +59,7 @@ export default function ListNews() {
 
     const [categories, setCategories] = useState([]);
 
+    // Fetch categories data
     useEffect(() => {
         try {
             axios.get("/api/categories").then((response) => {
@@ -95,9 +96,9 @@ export default function ListNews() {
             <Header title="Berita SDGs" />
 
             <main className="pt-8 lg:pt-16 bg-backgroundPrimary lg:bg-white ">
-                <div className="flex gap-16 px-8 xl:px-16 2xl:px-64">
+                <div className="flex gap-6 px-8 xl:px-16 2xl:px-64">
                     <section className="w-full">
-                        <div className="flex justify-between">
+                        <div className="flex flex-col gap-4 md:flex-row lg:flex-row xl:justify-between ">
                             {/* Year Filter */}
                             <YearFilter setSelectedYear={setSelectedYear} />
                             {/* Search Input */}
@@ -120,10 +121,14 @@ export default function ListNews() {
                                 ))
                             ) : (
                                 <h1 className="text-tertiary">Data tidak ada</h1>
- )}
+                            )}
                         </div>
                     </section>
 
+                    {/* Divider */}
+                    <div className="xl:h-screen xl:w-1 xl:bg-slate-100"></div>
+                    
+                    
                     {/* Categorie Section */}
                     <CategorySection
                         categories={categories}
@@ -145,11 +150,10 @@ export default function ListNews() {
                         .map((_, index) => (
                             <button
                                 key={index + 1}
-                                className={`min-w-9 rounded-sm ${
-                                    currentPage === index + 1
+                                className={`min-w-9 rounded-sm ${currentPage === index + 1
                                         ? "bg-primary text-white"
                                         : "border border-slate-300 text-darkGrey hover:text-white hover:bg-primary"
-                                } py-2 px-3.5 text-center text-sm transition-all shadow-sm hover:shadow-lg focus:bg-secondary focus:shadow-none active:bg-primary hover:bg-tertiary active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2`}
+                                    } py-2 px-3.5 text-center text-sm transition-all shadow-sm hover:shadow-lg focus:bg-secondary focus:shadow-none active:bg-primary hover:bg-tertiary active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2`}
                                 onClick={() => handlePageChange(index + 1)}
                             >
                                 {index + 1}

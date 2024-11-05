@@ -5,7 +5,7 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 const Header = ({title}) => {
     return (
         <>
-            <header className="w-full h-[128px] md:h-[150px] lg:h-[180px] xl:h-[200px] 2xl:h-[200px]  relative flex justify-end items-center">
+            <header className="w-full h-[128px] md:h-[150px] lg:h-[180px] xl:h-[200px] 2xl:h-[350px]  relative flex justify-end items-center">
                 {/* Background Gradient Overlay */}
                 <div className="absolute inset-0 z-20 w-full h-full bg-gradient"></div>
 
@@ -34,12 +34,12 @@ const Header = ({title}) => {
 
                 {/* Title */}
                 <div className="absolute inset-0 z-50 flex items-center px-8 xl:px-16 2xl:px-64">
-                    <span className="text-base font-bold text-white md:text-2xl lg:text-4xl xl:text-7xl 2xl:text-7xl ">{title}</span>
+                    <span className="text-base font-bold text-white md:text-2xl lg:text-5xl xl:text-7xl 2xl:text-7xl ">{title}</span>
                 </div>
 
                 {/* Background Image */}
                 <div className="relative z-10 w-[50vw] h-full">
-                    <img src="/images/header.png" alt="Header background" className="object-cover object-left w-full h-full lg:object-right-top" />
+                    <img src="/images/header.png" alt="Header background" className="object-cover object-center w-full h-full lg:object-right-top" />
                 </div>
             </header>
         </>
