@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('slug', 100);
-            $table->string('subtitle')->nullable();
+            $table->longText('title');
+            $table->longText('slug');
+            $table->longText('subtitle')->nullable();
             $table->longText('content')->nullable();
             $table->string('image', 255);
             $table->foreignUuid('author_id')->constrained('authors');

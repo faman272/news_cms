@@ -30,7 +30,8 @@ const EditNews = ({ news, authors, categories }) => {
             setSubtitle(news.subtitle);
             setSlug(news.slug);
             setAuthorId(news.author_id);
-            setPreview('/storage/' + news.image);
+            const imagePath = news.image.startsWith('images/news/') ? `/storage/${news.image}` : `/${news.image}`;
+            setPreview(imagePath);
             setSelectedCategories(news.categories.map((cat) => cat.id.toString()));
         }
     }, [news]);
@@ -128,7 +129,7 @@ const EditNews = ({ news, authors, categories }) => {
             console.error(error);
             toast.error('Failed to upload image');
         }
-        
+
     }
 
     return (

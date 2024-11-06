@@ -2,7 +2,7 @@ import React from 'react'
 import { GoHome } from "react-icons/go";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
-const Header = ({title}) => {
+const Header = ({ title }) => {
     return (
         <>
             <header className="w-full h-[128px] md:h-[150px] lg:h-[180px] xl:h-[200px] 2xl:h-[350px]  relative flex justify-end items-center">

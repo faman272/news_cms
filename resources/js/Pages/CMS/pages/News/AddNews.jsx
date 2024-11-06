@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Main from '../../layouts/Main';
 import { Editor } from 'react-draft-wysiwyg';
-import { EditorState, convertToRaw } from 'draft-js';
+import { EditorState, convertToRaw, RichUtils } from 'draft-js';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import draftToHtml from 'draftjs-to-html';
 import { createSlug } from '../../utils/slug';
@@ -102,6 +102,7 @@ const AddNews = ({ categories, authors }) => {
             }, 3000)
 
         } catch (error) {
+            toast.error('Failed to add news. Try Using Smaller Image Size');
             console.error('Failed to add news:', error);
         }
     };
@@ -158,6 +159,17 @@ const AddNews = ({ categories, authors }) => {
                                     onEditorStateChange={handleEditorChange}
                                     toolbar={{
                                         options: ['inline', 'blockType', 'fontSize', 'list', 'textAlign', 'colorPicker', 'link', 'emoji', 'image', 'remove', 'history'],
+                                        inline: {
+                                            options: ['bold', 'italic', 'underline', 'strikethrough'],
+                                            bold: { className: 'font-body' },
+                                            italic: { className: 'font-body' },
+                                            underline: { className: 'font-body' },
+                                            strikethrough: { className: 'font-body' },
+                                        },
+                                        fontSize: {
+                                            options: [12, 14, 16, 18, 24, 30, 36],
+                                            defaultFontSize: 12,
+                                        },
                                     }}
                                     wrapperClassName="mt-2 border rounded-md"
                                     editorClassName="p-2 font-body"

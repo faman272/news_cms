@@ -7,7 +7,6 @@ use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use App\Models\News;
 use App\Models\Author;
-use App\Models\Category;
 
 class NewsSeeder extends Seeder
 {

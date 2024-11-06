@@ -11,7 +11,7 @@ const News = ({ news: initialNews }) => {
     const [news, setNews] = useState(initialNews);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
     const [deleteId, setDeleteId] = useState(null);
-    
+
     // Pagination state
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5; // Set the number of items per page
@@ -20,8 +20,8 @@ const News = ({ news: initialNews }) => {
     const [searchTerm, setSearchTerm] = useState('');
 
     // Calculate total pages
-    const filteredNews = news.filter(item => 
-        item.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    const filteredNews = news.filter(item =>
+        item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         item.categories.some(category => category.name.toLowerCase().includes(searchTerm.toLowerCase()))
     );
 
@@ -92,12 +92,12 @@ const News = ({ news: initialNews }) => {
                                 <span className="absolute inset-y-0 left-0 flex items-center pl-2">
                                     <IoSearchOutline size={20} />
                                 </span>
-                                <input 
+                                <input
                                     type="text"
                                     placeholder="Search news by title or category"
                                     value={searchTerm}
                                     onChange={(e) => setSearchTerm(e.target.value)}
-                                    className="block w-full py-2 pl-8 pr-6 text-lg text-gray-700 placeholder-gray-400 bg-white border border-b border-gray-400 rounded-l rounded-r appearance-none sm:rounded-l-none focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" 
+                                    className="block w-full py-2 pl-8 pr-6 text-lg text-gray-700 placeholder-gray-400 bg-white border border-b border-gray-400 rounded-l rounded-r appearance-none sm:rounded-l-none focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
                                 />
                             </div>
                         </div>
@@ -138,44 +138,51 @@ const News = ({ news: initialNews }) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {currentNews.map((item, index) => (
-                                    <tr key={item.id}>
-                                        <td className="px-5 py-5 text-lg bg-white border-b border-gray-200 ">{index + 1 + (currentPage - 1) * itemsPerPage}</td>
-                                        <td className="px-5 py-5 text-lg bg-white border-b border-gray-200">
-                                            <img
-                                                src={`/storage/${item.image}`}
-                                                alt="News" />
-                                        </td>
-                                        <td className="py-5 text-lg font-medium bg-white border-b border-gray-200 truncate-titlepx-5">{item.title}</td>
-                                        <td className="px-5 py-5 text-lg bg-white border-b border-gray-200">
-                                            <div className='flex flex-col gap-2 text-nowrap'>
-                                                {
-                                                    item.categories.map((category, index) => {
-                                                        return (
-                                                            <span key={index} className='px-2 py-1 text-sm text-center rounded-md bg-primary30 text-primary'>
-                                                                {category.name}
-                                                            </span>
-                                                        )
-                                                    })
-                                                }
-                                            </div>
-                                        </td>
-                                        <td className="px-5 py-5 text-lg bg-white border-b border-gray-200">
-                                            {item.author.name}
-                                        </td>
-                                        <td className="px-5 py-5 text-lg bg-white border-b border-gray-200">{formatDate(item.created_at)}</td>
-                                        <td className="px-5 py-5 text-lg bg-white border-b border-gray-200">
-                                            <div className="inline-flex mt-2 xs:mt-0">
-                                                <a href={`/dashboard/news/${item.id}`} className="px-4 py-2 font-semibold rounded-l bg-slate-200 hover:bg-slate-300 text-primary">
-                                                    <FaRegEdit size={18} />
-                                                </a>
-                                                <button onClick={() => handleDeleteModal(item.id)} className="px-4 py-2 font-semibold text-red-600 rounded-r bg-slate-200 hover:bg-slate-300">
-                                                    <MdDeleteOutline size={20} />
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                ))}
+                                {currentNews.map((item, index) => {
+                                    const imagePath = item.image.startsWith('images/news/') ? `/storage/${item.image}` : `/${item.image}`;
+
+                                    return (
+                                        <tr key={item.id}>
+                                            <td className="px-5 py-5 text-lg bg-white border-b border-gray-200">
+                                                {index + 1 + (currentPage - 1) * itemsPerPage}
+                                            </td>
+                                            <td className="px-5 py-5 text-lg bg-white border-b border-gray-200">
+                                                <img
+                                                    src={imagePath}
+                                                    alt="News"
+                                                />
+                                            </td>
+                                            <td className="py-5 text-lg font-medium bg-white border-b border-gray-200 truncate-titlepx-5">
+                                                {item.title}
+                                            </td>
+                                            <td className="px-5 py-5 text-lg bg-white border-b border-gray-200">
+                                                <div className='flex flex-col gap-2 text-nowrap'>
+                                                    {item.categories.map((category, index) => (
+                                                        <span key={index} className='px-2 py-1 text-sm text-center rounded-md bg-primary30 text-primary'>
+                                                            {category.name}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </td>
+                                            <td className="px-5 py-5 text-lg bg-white border-b border-gray-200">
+                                                {item.author.name}
+                                            </td>
+                                            <td className="px-5 py-5 text-lg bg-white border-b border-gray-200">
+                                                {formatDate(item.created_at)}
+                                            </td>
+                                            <td className="px-5 py-5 text-lg bg-white border-b border-gray-200">
+                                                <div className="inline-flex mt-2 xs:mt-0">
+                                                    <a href={`/dashboard/news/${item.id}`} className="px-4 py-2 font-semibold rounded-l bg-slate-200 hover:bg-slate-300 text-primary">
+                                                        <FaRegEdit size={18} />
+                                                    </a>
+                                                    <button onClick={() => handleDeleteModal(item.id)} className="px-4 py-2 font-semibold text-red-600 rounded-r bg-slate-200 hover:bg-slate-300">
+                                                        <MdDeleteOutline size={20} />
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    );
+                                })}
                             </tbody>
                         </table>
                     </ div>

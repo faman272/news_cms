@@ -41,13 +41,13 @@ export default function Login() {
                 <form className="mt-4" onSubmit={submit}>
                     <label className="block">
                         <span className="text-lg text-gray-700">Email</span>
-                        <input 
+                        <input
                             value={data.email}
-                            id='email' 
-                            name='email' 
-                            type="email" 
+                            id='email'
+                            name='email'
+                            type="email"
                             onChange={(e) => setData('email', e.target.value)}
-                            className={`block w-full mt-1 rounded-md form-input focus:border-indigo-600 ${errors.email ? 'border-red-500' : ''}`} 
+                            className={`block w-full mt-1 rounded-md form-input focus:border-indigo-600 ${errors.email ? 'border-red-500' : ''}`}
                         />
                         {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
                     </label>
@@ -57,10 +57,10 @@ export default function Login() {
                         <input
                             value={data.password}
                             id='password'
-                            name='password' 
-                            type="password" 
+                            name='password'
+                            type="password"
                             onChange={(e) => setData('password', e.target.value)}
-                            className={`block w-full mt-1 rounded-md form-input focus:border-indigo-600 ${errors.password ? 'border-red-500' : ''}`} 
+                            className={`block w-full mt-1 rounded-md form-input focus:border-indigo-600 ${errors.password ? 'border-red-500' : ''}`}
                         />
                         {errors.password && <p className="mt-1 text-sm text-red-500">{errors.password}</p>}
                     </label>

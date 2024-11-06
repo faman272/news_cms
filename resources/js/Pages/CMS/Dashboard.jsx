@@ -87,35 +87,42 @@ const Dashboard = (props) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {props.news.map((item, index) => (
-                                    <tr key={item.id}>
-                                        <td className="px-5 py-5 text-lg bg-white border-b border-gray-200 ">{index + 1}</td>
-                                        <td className="px-5 py-5 text-lg bg-white border-b border-gray-200">
-                                            <img
-                                                src={`/storage/${item.image}`}
-                                                alt="News" />
-                                        </td>
-                                        <td className="py-5 text-lg font-medium bg-white border-b border-gray-200 truncate-titlepx-5">{item.title}</td>
-                                        <td className="px-5 py-5 text-lg bg-white border-b border-gray-200">
-                                            <div className='flex flex-col gap-2 text-nowrap'>
-                                                {
-                                                    item.categories.map((category, index) => {
-                                                        return (
-                                                            <span key={index} className='px-2 py-1 text-sm text-center rounded-md bg-primary30 text-primary'>
-                                                                {category.name}
-                                                            </span>
-                                                        )
-                                                    })
-                                                }
-                                            </div>
-                                        </td>
-                                        <td className="px-5 py-5 text-lg bg-white border-b border-gray-200">
-                                            {item.author.name}
-                                        </td>
-                                        <td className="px-5 py-5 text-lg bg-white border-b border-gray-200">{formatDate(item.created_at)}</td>
+                                {props.news.map((item, index) => {
+                                    const imagePath = item.image.startsWith('images/news/') ? `/storage/${item.image}` : `/${item.image}`;
 
-                                    </tr>
-                                ))}
+                                    return (
+                                        <tr key={item.id}>
+                                            <td className="px-5 py-5 text-lg bg-white border-b border-gray-200">
+                                                {index + 1}
+                                            </td>
+                                            <td className="px-5 py-5 text-lg bg-white border-b border-gray-200">
+                                                <img
+                                                    src={imagePath}
+                                                    alt="News"
+                                                />
+                                            </td>
+                                            <td className="py-5 text-lg font-medium bg-white border-b border-gray-200 truncate-titlepx-5">
+                                                {item.title}
+                                            </td>
+                                            <td className="px-5 py-5 text-lg bg-white border-b border-gray-200">
+                                                <div className='flex flex-col gap-2 text-nowrap'>
+                                                    {item.categories.map((category, index) => (
+                                                        <span key={index} className='px-2 py-1 text-sm text-center rounded-md bg-primary30 text-primary'>
+                                                            {category.name}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            </td>
+                                            <td className="px-5 py-5 text-lg bg-white border-b border-gray-200">
+                                                {item.author.name}
+                                            </td>
+                                            <td className="px-5 py-5 text-lg bg-white border-b border-gray-200">
+                                                {formatDate(item.created_at)}
+                                            </td>
+                                        </tr>
+                                    );
+                                })}
+
                             </tbody>
                         </table>
                     </ div>

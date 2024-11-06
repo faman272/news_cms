@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CategoriesCheckbox = ({category, handleFilterByCategory}) => {
+const CategoriesCheckbox = ({ category, handleFilterByCategory }) => {
 
 
     return (

@@ -2,7 +2,7 @@ import React from 'react'
 import { GoHome } from 'react-icons/go'
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md'
 
-const Breadcrumbs = ({title}) => {
+const Breadcrumbs = ({ title }) => {
     return (
         <div className='text-xs xl:text-base px-8 xl:px-16 2xl:px-[200px] text-primary leading-4 font-semibold py-2'>
             <div className='flex w-full'>

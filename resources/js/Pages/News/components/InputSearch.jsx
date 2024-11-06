@@ -9,23 +9,26 @@ const InputSearch = ({ setSearchQuery }) => {
     };
 
     const handleSubmit = (e) => {
-        e.preventDefault(); 
-        setSearchQuery(query); 
+        e.preventDefault();
+        setSearchQuery(query);
     };
 
     return (
-        <form onSubmit={handleSubmit} className="flex w-full gap-4 xl:w-1/2">
-            <div className="relative flex items-center w-full ">
-                <FiSearch size={16} className="absolute text-primary left-3" />
+        <form onSubmit={handleSubmit} className="flex w-full gap-2 md:max-w-[40%]">
+            <div className="relative flex items-center w-full">
+                <FiSearch size={16} className="absolute left-3 text-primary" />
                 <input
                     type="text"
-                    value={query} 
-                    onChange={handleOnChange} 
+                    value={query}
+                    onChange={handleOnChange}
                     placeholder="CARI DISINI"
-                    className="w-full pr-3 text-xs text-right placeholder-gray-400 border border-gray-300 rounded-sm leading-2xs lg:text-base focus:outline-none focus:border-primary"
+                    className="w-full pr-3 text-xs text-right placeholder-gray-400 border border-gray-300 rounded-sm focus:outline-none focus:border-primary md:text-sm lg:text-base"
                 />
             </div>
-            <button type='submit' className="py-2 text-xs font-bold text-white rounded-sm xl:text-base bg-primary leading-2xs lg:text-sm px-7">
+            <button
+                type="submit"
+                className="px-5 py-2 text-xs font-bold text-white rounded-sm bg-primary md:text-sm lg:text-base"
+            >
                 CARI
             </button>
         </form>
